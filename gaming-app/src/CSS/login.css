@@ -1,0 +1,39 @@
+*{
+    padding: 0px 0px;
+    margin: 0px 0px;
+}
+#logincontainer{
+    
+    background:linear-gradient(295deg, #3533CD, black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+::placeholder{
+    color: black;
+    text-align: center;
+    border: 2px dashed brown;
+    padding:3px 0px;
+    border-radius:10px;
+}
+#scrollbody{
+    overflow: scroll;
+    overflow-x:hidden; 
+    overflow-y:auto;
+    border-radius: 10px;
+    cursor: pointer;
+}
+#continue{
+    width:15%;
+    font-size:26px;
+    border-radius:10px;
+    border: 4px solid yellow;
+    color:yellow;
+    padding:10px 0px;
+    background-color:#1A237E;
+    font-family: serif;
+}
+#continue:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}

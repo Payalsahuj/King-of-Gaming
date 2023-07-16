@@ -1,0 +1,7 @@
+#welcometwo{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:linear-gradient(295deg, #3533CD, black 60%)
+}
