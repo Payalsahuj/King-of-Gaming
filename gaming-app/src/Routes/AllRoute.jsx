@@ -4,6 +4,7 @@ import { Welcometwo } from "../Pages/Welcometwo"
 import { Home } from "../Pages/Home"
 import { Register } from "../Pages/Register"
 import { PrivateRoute } from "./PrivateRoute"
+import { Ludo } from "../Pages/Ludo"
 
 
 function Allroute(){
@@ -13,7 +14,7 @@ function Allroute(){
             <Route path="/welcome" element={<Welcometwo/>}/>
             <Route path="/register" element={<Register/>}/>
             <Route path="/home" element={<PrivateRoute><Home/></PrivateRoute>}/>
-            
+            <Route path="/ludo" element={<PrivateRoute><Ludo/></PrivateRoute>}/>
         </Routes>
 
     </div>

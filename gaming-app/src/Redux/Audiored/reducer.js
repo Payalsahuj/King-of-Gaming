@@ -1,8 +1,9 @@
-import { TOGGELAUDIO } from "./actionType"
+import { STOPAUDIO, TOGGELAUDIO } from "./actionType"
 
 
 const initialstate={
-   audio:false
+   audio:false,
+   
 }
 
 export const reducer=(state=initialstate,action)=>{
@@ -10,6 +11,10 @@ export const reducer=(state=initialstate,action)=>{
         case TOGGELAUDIO:{
             return {...state,audio:!state.audio}
         }
+        case STOPAUDIO:{
+            return {...state,audio:true}
+        }
+        
         default:{
             return {...state}
         }

@@ -10,8 +10,9 @@ import server from "../Image/512x512bb.jpg"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { useDispatch, useSelector } from "react-redux"
-import { toggel } from "../Redux/Audiored/action"
+import { stopaudio, toggel } from "../Redux/Audiored/action"
 import {TbMusicOff} from "react-icons/tb"
+import { useNavigate } from "react-router-dom"
 
 
 
@@ -19,6 +20,7 @@ export const Home=()=>{
     const isMuted = useSelector((store)=> store.reducer.audio)
     const dispatch=useDispatch()
     const [data,setdata]=useState({})
+    const navigate=useNavigate()
     const email=localStorage.getItem("email")
     function getdata(){
         
@@ -38,6 +40,11 @@ export const Home=()=>{
 
     function handleaudio(){
         dispatch(toggel)
+    }
+
+    function handleplaywithserver(){
+        dispatch(stopaudio)
+        navigate("/ludo")
     }
 
     console.log(data)
@@ -65,7 +72,7 @@ export const Home=()=>{
             <h1><b>Welcome to the ludo World</b></h1>
             <br/>
             <Box display={'flex'}>
-            <Box w={'35%'} color={'yellow'} m='auto'  fontSize={'25px'} borderRadius={'18px'}  border={'6px solid yellow'} _hover={{cursor:'pointer',transform:'scale(1.1)'}}>
+            <Box onClick={handleplaywithserver} w={'35%'} color={'yellow'} m='auto'  fontSize={'25px'} borderRadius={'18px'}  border={'6px solid yellow'} _hover={{cursor:'pointer',transform:'scale(1.1)'}}>
                 <Image src={server} w={'100%'} h={'150px'} borderBottom={'6px solid yellow'} borderRadius={'18px 18px 0px 0px'} alt=''/>
                 <p><b>Play With Server</b></p>
             </Box>

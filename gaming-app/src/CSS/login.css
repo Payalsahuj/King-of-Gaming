@@ -15,6 +15,7 @@
     border: 2px dashed brown;
     padding:3px 0px;
     border-radius:10px;
+    
 }
 #scrollbody{
     overflow: scroll;
