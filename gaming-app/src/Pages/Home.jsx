@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom"
 
 
 export const Home=()=>{
-    const isMuted = useSelector((store)=> store.reducer.audio)
+    const isMuted = useSelector((store)=> store.audioreducer.audio)
     const dispatch=useDispatch()
     const [data,setdata]=useState({})
     const navigate=useNavigate()

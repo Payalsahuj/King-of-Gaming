@@ -5,7 +5,7 @@ import { toggel } from "../Redux/Audiored/action";
 
 const AudioPlayer = () => {
   const audioRef = useRef(null);
-  const isMuted = useSelector((store)=> store.reducer.audio)
+  const isMuted = useSelector((store)=> store.audioreducer.audio)
   const dispatch=useDispatch()
   useEffect(() => {
     const playAudio = () => {

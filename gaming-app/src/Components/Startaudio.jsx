@@ -8,8 +8,7 @@ export const Startplay = () => {
  
 
   return (
-    <div>
-      
+    <div> 
       {/* Hidden audio element */}
       <audio ref={audioRef} controls={false}>
         <source src={audioSrc} />
