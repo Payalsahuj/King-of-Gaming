@@ -1,4 +1,4 @@
-import { CARRYFOUR, CARRYONE, CARRYTHREE, CARRYTWO, YELFOUR, YELONE, YELTHREE, YELTWO } from "./actionType"
+import { CARRYFOUR, CARRYONE, CARRYTHREE, CARRYTWO, DEADFOURYEL, DEADONEYEL, DEADTHREEYEL, DEADTWOYEL, YELFOUR, YELONE, YELTHREE, YELTWO } from "./actionType"
 
 
 export const carryone=(data)=>(dispatch)=>{
@@ -20,6 +20,7 @@ export const carryfour=(data)=>(dispatch)=>{
 
 
 
+
 export const carryonebyyelone =(data)=>(dispatch)=>{
     
     dispatch({type:YELONE,payload:data})
@@ -37,4 +38,23 @@ export const carrythreebyyelthree =(data)=>(dispatch)=>{
 export const carryfourbyyelfour =(data)=>(dispatch)=>{
     console.log(data)
     dispatch({type:YELFOUR,payload:data})
+}
+
+
+
+
+export const diedoneyel=(dispatch)=>{
+    dispatch({type:DEADONEYEL})
+}
+
+export const diedtwoyel=(dispatch)=>{
+    dispatch({type:DEADTWOYEL})
+}
+
+export const diedthreeyel=(dispatch)=>{
+    dispatch({type:DEADTHREEYEL})
+}
+
+export const diedfouryel=(dispatch)=>{
+    dispatch({type:DEADFOURYEL})
 }

@@ -7,6 +7,7 @@ import { PrivateRoute } from "./PrivateRoute"
 import { Ludo } from "../Pages/Ludo"
 
 
+
 function Allroute(){
     return <div>
         <Routes>
@@ -15,6 +16,7 @@ function Allroute(){
             <Route path="/register" element={<Register/>}/>
             <Route path="/home" element={<PrivateRoute><Home/></PrivateRoute>}/>
             <Route path="/ludo" element={<PrivateRoute><Ludo/></PrivateRoute>}/>
+            
         </Routes>
 
     </div>

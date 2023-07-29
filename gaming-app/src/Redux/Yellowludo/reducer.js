@@ -1,4 +1,4 @@
-import { CARRYFOUR, CARRYONE, CARRYTHREE, CARRYTWO, YELFOUR, YELONE, YELTHREE, YELTWO } from "./actionType"
+import { CARRYFOUR, CARRYONE, CARRYTHREE, CARRYTWO, DEADFOURYEL, DEADONEYEL, DEADTHREEYEL, DEADTWOYEL, YELFOUR, YELONE, YELTHREE, YELTWO } from "./actionType"
 
 
 const initialstate={
@@ -44,6 +44,18 @@ export const reducer=(state=initialstate,action)=>{
         }
         case YELFOUR:{
             return {...state,yelfour:action.payload,carrytwo:0,carryone:0,carrythree:0,carryfour:0} 
+        }
+        case DEADONEYEL:{
+            return {...state,yelone:0,carrytwo:0,carryone:0,carrythree:0,carryfour:0} 
+        }
+        case DEADTWOYEL:{
+            return {...state,yeltwo:0,carrytwo:0,carryone:0,carrythree:0,carryfour:0} 
+        }
+        case DEADTHREEYEL:{
+            return {...state,yelthree:0,carrytwo:0,carryone:0,carrythree:0,carryfour:0} 
+        }
+        case DEADFOURYEL:{
+            return {...state,yelfour:0,carrytwo:0,carryone:0,carrythree:0,carryfour:0} 
         }
         default:{
             return {...state}

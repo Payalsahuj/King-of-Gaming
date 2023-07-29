@@ -12,11 +12,12 @@ import axios from "axios"
 import { useDispatch, useSelector } from "react-redux"
 import { stopaudio, toggel } from "../Redux/Audiored/action"
 import {TbMusicOff} from "react-icons/tb"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 
 
 
 export const Home=()=>{
+    const location=useLocation()
     const isMuted = useSelector((store)=> store.audioreducer.audio)
     const dispatch=useDispatch()
     const [data,setdata]=useState({})
@@ -38,6 +39,7 @@ export const Home=()=>{
         getdata()
     },[])
 
+    console.log(location)
     function handleaudio(){
         dispatch(toggel)
     }
@@ -49,7 +51,7 @@ export const Home=()=>{
 
     console.log(data)
     return<Box fontFamily={'serif'} background={'linear-gradient(295deg, #3533CD, black)'}  p={'10% 0%'}>
-        <Box style={{position:'fixed',top:'0',borderBottom:'4px solid yellow',borderTop:'2px solid transparent',width:'100%',borderRadius:'0% 0% 10% 10%'}} background={'linear-gradient(295deg, #3533CD, black)'}>
+        <Box style={{position:'fixed',top:'0',borderBottom:'4px solid yellow',borderTop:'2px solid transparent',width:'100%',borderRadius:'0% 0% 10% 10%',zIndex:'6'}} background={'linear-gradient(295deg, #3533CD, black)'}>
                 <Box style={{ display: 'flex', flexDirection: 'row',justifyContent:'space-between', alignItems: 'center' }}>
                     <Box display={'flex'} >
                     <Image src={logo} width={{base:'3%',md:'8%'}} m={'15px'} alt='' />
@@ -61,22 +63,25 @@ export const Home=()=>{
 
                 </Box>
         </Box>
-        <Box  display={'flex'} gap={'2%'} justifyContent={'center'} alignItems={'center'} >
-        <Box w={'37%'} borderRadius={'20px'} >
+        <br/>
+        <Box  display={'flex'} flexDirection={{base:'column',sm:'column',md:'column',lg:'row'}} gap={'2%'} justifyContent={'center'} alignItems={'center'} >
+        <Box w={{base:'100%',lg:'37%'}} padding={'0% 5%'} borderRadius={'20px'} >
         <img src={ludo} style={{margin:'auto'}} alt="" />
         <Gsap/>
         </Box>
-        <Box w={'47%'} fontSize={'29px'} p={'2%'} >
+        <Box w={{base:'100%',lg:'47%'}} fontSize={'29px'} p={'2%'} >
             <Box color={'yellow'}>
             <h1><b>Hello, {data.name}</b></h1>
             <h1><b>Welcome to the ludo World</b></h1>
             <br/>
-            <Box display={'flex'}>
-            <Box onClick={handleplaywithserver} w={'35%'} color={'yellow'} m='auto'  fontSize={'25px'} borderRadius={'18px'}  border={'6px solid yellow'} _hover={{cursor:'pointer',transform:'scale(1.1)'}}>
+            <Box display={'flex'}  flexDirection={{base:'column',sm:'column',md:'column',lg:'row'}}>
+            <Box onClick={handleplaywithserver}  w={{base:'70%',md:'55%',lg:'35%'}} color={'yellow'} m='auto'  fontSize={'25px'} borderRadius={'18px'}  border={'6px solid yellow'} _hover={{cursor:'pointer',transform:'scale(1.1)'}}>
                 <Image src={server} w={'100%'} h={'150px'} borderBottom={'6px solid yellow'} borderRadius={'18px 18px 0px 0px'} alt=''/>
                 <p><b>Play With Server</b></p>
             </Box>
-            <Box w={'35%'} color={'yellow'} m='auto'  fontSize={'25px'} borderRadius={'18px'}  border={'6px solid yellow'} _hover={{cursor:'pointer',transform:'scale(1.1)'}}>
+            <br/>
+            <br/>
+            <Box w={{base:'70%',md:'55%',lg:'35%'}} color={'yellow'} m='auto'  fontSize={'25px'} borderRadius={'18px'}  border={'6px solid yellow'} _hover={{cursor:'pointer',transform:'scale(1.1)'}}>
                 <Image src={'https://play-lh.googleusercontent.com/DE3Pnn2lQ0vrudHmK8gKC_WKzXHNjUJ6mU1B76fX3hHQAhaVTtHL50a3AUrdbOZNaJWG'} w={'100%'} h={'150px'} borderBottom={'6px solid yellow'} borderRadius={'18px 18px 0px 0px'} alt=''/>
                 <p><b>Local Multiplayer</b></p>
             </Box>

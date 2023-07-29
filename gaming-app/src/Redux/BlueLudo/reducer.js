@@ -1,4 +1,4 @@
-import { BLUBUTTFOUR, BLUBUTTONE, BLUBUTTTHREE, BLUBUTTTWO, CARRYFOURBLU, CARRYONEBLU, CARRYTHREEBLU, CARRYTWOBLU } from "./actionType"
+import { BLUBUTTFOUR, BLUBUTTONE, BLUBUTTTHREE, BLUBUTTTWO, CARRYFOURBLU, CARRYONEBLU, CARRYTHREEBLU, CARRYTWOBLU, DEADFOURBLU, DEADONEBLU, DEADTHREEBLU, DEADTWOBLU } from "./actionType"
 
 
 
@@ -45,6 +45,18 @@ export const reducer=(state=initialstate,action)=>{
         }
         case BLUBUTTFOUR:{
             return {...state,blufour:action.payload,blucarrytwo:0,blucarryone:0,blucarrythree:0,blucarryfour:0} 
+        }
+        case DEADONEBLU:{
+            return {...state,bluone:0,blucarrytwo:0,blucarryone:0,blucarrythree:0,blucarryfour:0}
+        }
+        case DEADTWOBLU:{
+            return {...state,blutwo:0,blucarrytwo:0,blucarryone:0,blucarrythree:0,blucarryfour:0}
+        }
+        case DEADTHREEBLU:{
+            return {...state,bluthree:0,blucarrytwo:0,blucarryone:0,blucarrythree:0,blucarryfour:0}
+        }
+        case DEADFOURBLU:{
+            return {...state,blufour:0,blucarrytwo:0,blucarryone:0,blucarrythree:0,blucarryfour:0}
         }
         default:{
             return {...state}

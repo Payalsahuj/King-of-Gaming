@@ -3,7 +3,7 @@ import yellowstar from "../../Image/yellowstar.png"
 
 
 
-export const YellOneImg=({handelyellowone})=>{
-    return <Image onClick={handelyellowone} src={yellowstar} _hover={{cursor:'pointer'}} position="absolute" w={'60px'} alt=""/>
+export const YellOneImg=({handelyellowone,displayyelldice})=>{
+    return <Image  pointerEvents={displayyelldice?'':'none'} onClick={handelyellowone} src={yellowstar} _hover={{cursor:'pointer'}} position="absolute" w={'60px'} alt=""/>
     
 }

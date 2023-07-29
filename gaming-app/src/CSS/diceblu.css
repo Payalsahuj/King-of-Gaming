@@ -1,0 +1,32 @@
+
+
+.diceblu{
+    width: 75%;
+    height: 75%;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 15px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: 'center';
+    padding:10%;
+    gap: 10%;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 1s;
+    animation: rollAnimationblu 2s linear;
+  }
+    
+  
+    @keyframes rollAnimationblu{
+      0% {
+          transform: translateZ(-20px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+        }
+        50% {
+          transform: translateZ(-100px) rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+        }
+        100% {
+          transform: translateZ(-20px) rotateX(720deg) rotateY(720deg) rotateZ(720deg);
+        }
+    }
+  
