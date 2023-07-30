@@ -12,12 +12,12 @@ import axios from "axios"
 import { useDispatch, useSelector } from "react-redux"
 import { stopaudio, toggel } from "../Redux/Audiored/action"
 import {TbMusicOff} from "react-icons/tb"
-import { useLocation, useNavigate } from "react-router-dom"
+import {  useNavigate } from "react-router-dom"
 
 
 
 export const Home=()=>{
-    const location=useLocation()
+    
     const isMuted = useSelector((store)=> store.audioreducer.audio)
     const dispatch=useDispatch()
     const [data,setdata]=useState({})
@@ -39,7 +39,7 @@ export const Home=()=>{
         getdata()
     },[])
 
-    console.log(location)
+    
     function handleaudio(){
         dispatch(toggel)
     }
@@ -49,7 +49,7 @@ export const Home=()=>{
         navigate("/ludo")
     }
 
-    console.log(data)
+   
     return<Box fontFamily={'serif'} background={'linear-gradient(295deg, #3533CD, black)'}  p={'10% 0%'}>
         <Box style={{position:'fixed',top:'0',borderBottom:'4px solid yellow',borderTop:'2px solid transparent',width:'100%',borderRadius:'0% 0% 10% 10%',zIndex:'6'}} background={'linear-gradient(295deg, #3533CD, black)'}>
                 <Box style={{ display: 'flex', flexDirection: 'row',justifyContent:'space-between', alignItems: 'center' }}>

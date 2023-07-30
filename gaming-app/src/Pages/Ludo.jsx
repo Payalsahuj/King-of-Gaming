@@ -16,7 +16,7 @@ import { YellTwoImg } from "../Components/YellImage/YellTwoImg"
 import { YellThreeImg } from "../Components/YellImage/YellThreeImg"
 import { YellFourImg } from "../Components/YellImage/YellFourImg"
 import { Jumpplay } from "../Components/Audiojump"
-import { carryfourblu, carryfourbyblufour, carryoneblu, carryonebybluone, carrythreeblu, carrythreebybluthree, carrytwoblu, carrytwobyblutwo, diedfourblu, diedoneblu, diedthreeblu, diedtwoblu } from "../Redux/BlueLudo/action"
+import {  carryfourbyblufour,  carryonebybluone,  carrythreebybluthree, carrytwobyblutwo, diedfourblu, diedoneblu, diedthreeblu, diedtwoblu } from "../Redux/BlueLudo/action"
 import { BluOneImg } from "../Components/BluImage/BluOneImg"
 import { BluTwoImg } from "../Components/BluImage/BluTwoImg"
 import { BluThreeImg } from "../Components/BluImage/BluThreeImg"
@@ -29,7 +29,6 @@ export const Ludo = () => {
     
     const store=useSelector((store)=>store.yellreducer)
     const storeblu=useSelector((store)=>store.blureducer)
-
 
     const [displaybludice,setdisplaybludice]=useState(false)
     const [displayyelldice,setdisplayyelldice]=useState(true)
@@ -80,6 +79,9 @@ export const Ludo = () => {
     function handelyeldice(visiblity){
         setdisplayyelldice(visiblity)
     }
+    function jumpfunaudio(){
+        setjumpaudio(false)
+    }
     
 
 
@@ -110,35 +112,13 @@ export const Ludo = () => {
     }
 
 
-    function handlediceblueone(data){
-        dispatch(carryoneblu(data))
-        setjumpaudio(false)
-        setdeadaudio(false)
-    }
-    function handledicebluetwo(data){
-        dispatch(carrytwoblu(data))
-        setjumpaudio(false)
-        setdeadaudio(false)
-    }
-    function handledicebluethree(data){
-        dispatch(carrythreeblu(data))
-        setjumpaudio(false)
-        setdeadaudio(false)
-    }
-    function handledicebluefour(data){
-        dispatch(carryfourblu(data))
-        setjumpaudio(false)
-        setdeadaudio(false)
-    }
-
-
-
+   
 
     
 
     function handelyellowone(){
         if((store.yelone==0 && store.carryone===6) || store.yelone>=6 ){
-            setjumpaudio(true)
+            // setjumpaudio(true)
             let steps=store.carryone+store.yelone
             setyelimgone(steps)
             if(steps<41 && Math.abs(steps-storeblu.bluone)===18 && storeblu.bluone!==0){
@@ -167,6 +147,7 @@ export const Ludo = () => {
                 dispatch(carryonebyyelone(steps))
             }
             else{
+                
             dispatch(carryonebyyelone(steps))
             }
             
@@ -177,7 +158,7 @@ export const Ludo = () => {
 
     function handelyellowtwo(){
         if((store.yeltwo==0 && store.carrytwo==6)  || store.yeltwo>=6){
-            setjumpaudio(true)
+            // setjumpaudio(true)
             let steps=store.carrytwo+store.yeltwo
             setyelimgtwo(steps)
             if(steps<41 && Math.abs(steps-storeblu.bluone)===18 && storeblu.bluone!==0){
@@ -216,7 +197,7 @@ export const Ludo = () => {
     }
     function handelyellowthree(){
         if((store.yelthree==0 && store.carrythree==6) || store.yelthree>=6){
-            setjumpaudio(true)
+            // setjumpaudio(true)
             let steps=store.carrythree+store.yelthree
             setyelimgthree(steps)
             if(steps<41 && Math.abs(steps-storeblu.bluone)===18 && storeblu.bluone!==0){
@@ -253,7 +234,7 @@ export const Ludo = () => {
     function handelyellowfour(){
  
         if((store.yelfour==0 && store.carryfour==6) || store.yelfour>=6){
-            setjumpaudio(true)
+            // setjumpaudio(true)
             let steps=store.carryfour+store.yelfour
             setyelimgfour(steps)
             if(steps<41 && Math.abs(steps-storeblu.bluone)===18 && storeblu.bluone!==0){
@@ -291,13 +272,19 @@ export const Ludo = () => {
     }
 
 
+    function handlenoneventyell(){
+        handelbludice(true)
+                handelyeldice(false)
+    }
 
 
-    function handelblueone(){
+
+
+    function handelblueone(data){
        
-        if((storeblu.bluone==0 && storeblu.blucarryone==6) || storeblu.bluone>=6 ){
+        if((storeblu.bluone==0 && data==6) || storeblu.bluone>=6 ){
             setjumpaudio(true)
-            let steps=storeblu.blucarryone+storeblu.bluone
+            let steps=data+storeblu.bluone
             setbluimgone(steps)
             if(steps<41 && Math.abs(steps-store.yelone)===18 && store.yelone!==0){
                 setdeadaudio(true)
@@ -319,12 +306,14 @@ export const Ludo = () => {
                 setyelimgfour(0)
                 dispatch(diedfouryel)
             }
-            if(storeblu.blucarryone!==6){
+            if(data!==6){
                 handelbludice(false)
                 handelyeldice(true)
                 dispatch(carryonebybluone(steps))
             }
             else{
+                handelbludice(false)
+                handelyeldice(true)
                 dispatch(carryonebybluone(steps))
             }
             
@@ -332,10 +321,10 @@ export const Ludo = () => {
        
     }
 
-    function handelbluetwo(){
-        if((storeblu.blutwo==0 && storeblu.blucarrytwo==6) || storeblu.blutwo>=6){
+    function handelbluetwo(data){
+        if((storeblu.blutwo==0 && data==6) || storeblu.blutwo>=6){
             setjumpaudio(true)
-            let steps=storeblu.blucarrytwo+storeblu.blutwo
+            let steps=data+storeblu.blutwo
             setbluimgtwo(steps)
             if(steps<41 && Math.abs(steps-store.yelone)===18 && store.yelone!==0){
                 setdeadaudio(true)
@@ -357,22 +346,24 @@ export const Ludo = () => {
                 setyelimgfour(0)
                 dispatch(diedfouryel)
             }
-            if(storeblu.blucarrytwo!==6){
+            if(data!==6){
                 handelbludice(false)
                 handelyeldice(true)
                 dispatch(carrytwobyblutwo(steps))
             }
             else{
+                handelbludice(false)
+                handelyeldice(true)
             dispatch(carrytwobyblutwo(steps))
 
             }
         }
        
     }
-    function handelbluethree(){
-        if((storeblu.bluthree==0 && storeblu.blucarrythree==6) || storeblu.bluthree>=6 ){
+    function handelbluethree(data){
+        if((storeblu.bluthree==0 && data==6) || storeblu.bluthree>=6 ){
             setjumpaudio(true)
-            let steps=storeblu.blucarrythree+storeblu.bluthree
+            let steps=data+storeblu.bluthree
             setbluimgthree(steps)
             if(steps<41 && Math.abs(steps-store.yelone)===18 && store.yelone!==0){
                 setdeadaudio(true)
@@ -394,23 +385,27 @@ export const Ludo = () => {
                 setyelimgfour(0)
                 dispatch(diedfouryel)
             }
-            if(storeblu.blucarrythree!==6){
+            if(data!==6){
                 handelbludice(false)
                 handelyeldice(true)
                 dispatch(carrythreebybluthree(steps))
             }
             else{
+                handelbludice(false)
+                handelyeldice(true)
                 dispatch(carrythreebybluthree(steps))
             }
         }
         
         
     }
-    function handelbluefour(){
-        if((storeblu.blufour==0 && storeblu.blucarryfour==6) || storeblu.blufour>=6 ){
+    function handelbluefour(data){
+       
+        if((storeblu.blufour==0 && data==6) || storeblu.blufour>=6 ){
             setjumpaudio(true)
-            let steps=storeblu.blucarryfour+storeblu.blufour
+            let steps=data+storeblu.blufour
             setbluimgfour(steps)
+           
             if(steps<41 && Math.abs(steps-store.yelone)===18 && store.yelone!==0){
                 setdeadaudio(true)
                 setyelimgone(0)
@@ -431,20 +426,26 @@ export const Ludo = () => {
                 setyelimgfour(0)
                 dispatch(diedfouryel)
             }
-            if(storeblu.blucarryfour!==6){
+            if(data!==6){
                 handelbludice(false)
                 handelyeldice(true)
                 dispatch(carryfourbyblufour(steps))
             }
             else{
+                handelbludice(false)
+                handelyeldice(true)
                 dispatch(carryfourbyblufour(steps))
             }
 
         }
         
     }
-    // console.log(storeblu)
-    // console.log(store)
+    function handlenonevent(){
+        handelbludice(false)
+        handelyeldice(true) 
+    }
+    console.log(storeblu)
+    console.log(store)
 
 
     return <Box height={'100vh'} background={'linear-gradient(295deg, #3533CD, black)'} display={'flex'} justifyContent={'center'} alignItems={'center'} >
@@ -466,7 +467,7 @@ export const Ludo = () => {
                 <Box h={'42%'} backgroundColor={'#d8ba11'} borderRadius={'15px'} display={'flex'} alignItems={'center'} justifyContent={"center"}>
                     <Box h={'70%'} w={'75%'} borderRadius={'15px'} backgroundColor={'white'} display={'flex'} justifyContent={'center'} alignItems={'center'}>
                         <Box display={displaybludice?'flex':'none'} w={'100%'} h={'100%'} >
-                            {displaybludice?<Diceblue handlediceblueone={handlediceblueone} handledicebluetwo={handledicebluetwo} handledicebluethree={handledicebluethree} handledicebluefour={handledicebluefour} handelyeldice={handelyeldice} handelbludice={handelbludice}/>:''}
+                            {displaybludice?<Diceblue handelblueone={handelblueone} handelbluetwo={handelbluetwo} handelbluethree={handelbluethree} handelbluefour={handelbluefour} handelyeldice={handelyeldice} handelbludice={handelbludice} jumpfunaudio={jumpfunaudio} handlenonevent={handlenonevent}/>:''}
                         </Box>
                     </Box>
                 </Box>
@@ -1059,7 +1060,7 @@ export const Ludo = () => {
                 <Box h={'45%'} backgroundColor={'#d8ba11'} borderRadius={'15px'} display={'flex'} alignItems={'center'} justifyContent={"center"}>
                     <Box h={'70%'} w={'75%'} borderRadius={'15px'}  backgroundColor={'white'}>
                         <Box display={displayyelldice?'flex':'none'} w={'100%'} h={'100%'}>
-                      <Diceyellow  handlediceyellowone={handlediceyellowone} handlediceyellowtwo={handlediceyellowtwo} handlediceyellowthree={handlediceyellowthree} handlediceyellowfour={handlediceyellowfour} handelyeldice={handelyeldice} handelbludice={handelbludice}/>
+                      <Diceyellow  handlediceyellowone={handlediceyellowone} handlediceyellowtwo={handlediceyellowtwo} handlediceyellowthree={handlediceyellowthree} handlediceyellowfour={handlediceyellowfour} handelyeldice={handelyeldice} handelbludice={handelbludice} handlenoneventyell={handlenoneventyell}/>
 
                         </Box>
                     </Box>

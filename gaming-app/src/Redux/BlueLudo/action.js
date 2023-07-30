@@ -1,31 +1,10 @@
-import { BLUBUTTFOUR, BLUBUTTONE, BLUBUTTTHREE, BLUBUTTTWO, CARRYFOURBLU, CARRYONEBLU, CARRYTHREEBLU, CARRYTWOBLU, DEADFOURBLU, DEADONEBLU, DEADTHREEBLU, DEADTWOBLU } from "./actionType"
-
-
-export const carryoneblu=(data)=>(dispatch)=>{
-    dispatch({type:CARRYONEBLU,payload:data})
-}
-
-export const carrytwoblu=(data)=>(dispatch)=>{
-    dispatch({type:CARRYTWOBLU,payload:data})
-}
-
-export const carrythreeblu=(data)=>(dispatch)=>{
-    dispatch({type:CARRYTHREEBLU,payload:data})
-}
-
-export const carryfourblu=(data)=>(dispatch)=>{
-    dispatch({type:CARRYFOURBLU,payload:data})
-}
-
-
+import { BLUBUTTFOUR, BLUBUTTONE, BLUBUTTTHREE, BLUBUTTTWO, DEADFOURBLU, DEADONEBLU, DEADTHREEBLU, DEADTWOBLU } from "./actionType"
 
 
 
 
 export const carryonebybluone =(data)=>(dispatch)=>{
-    // if(data<40){
-
-    // }
+    
     console.log(data)
     dispatch({type:BLUBUTTONE,payload:data})
 }

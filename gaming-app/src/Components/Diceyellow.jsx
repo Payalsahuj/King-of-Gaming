@@ -6,7 +6,7 @@ import {useSelector} from 'react-redux';
 import { Sixplay } from './Audiosix';
 
 
-export const Diceyellow = ({handlediceyellowone,handlediceyellowtwo,handlediceyellowthree,handlediceyellowfour,handelyeldice,handelbludice}) => {
+export const Diceyellow = ({handlediceyellowone,handlediceyellowtwo,handlediceyellowthree,handlediceyellowfour,handelyeldice,handelbludice,handlenoneventyell}) => {
   const [diceValue, setDiceValue] = useState(3);
   const [arr,setarr]=useState([1,1,1])
   const [sixplay,setsixplay]=useState(false)
@@ -34,20 +34,19 @@ export const Diceyellow = ({handlediceyellowone,handlediceyellowtwo,handlediceye
     }
 
 
-    else if((store.yelone>=6 && store.yelone+newValue<=44)  ||  (store.yeltwo>=6 && store.yeltwo+newValue<=44) || (store.yelthree>=6 && store.yelthree+newValue<=44) || (store.yelfour>=6 && store.yelfour+newValue<=44)){
+    else if((store.yelone>=6 && store.yelone+newValue<=45)  ||  (store.yeltwo>=6 && store.yeltwo+newValue<=45) || (store.yelthree>=6 && store.yelthree+newValue<=45) || (store.yelfour>=6 && store.yelfour+newValue<=45)){
       
       setsixplay(false)
       handlediceyellowone(store.carryone+newValue)
       handlediceyellowtwo(store.carrytwo+newValue)
       handlediceyellowthree(store.carrythree+newValue)
       handlediceyellowfour(store.carryfour+newValue)
-    }
-
-
-    else if(store.carryone+newValue===45){
-      alert("winner")
+      
     }
     
+    else{
+      handlenoneventyell()
+    }
   };
  
   return (

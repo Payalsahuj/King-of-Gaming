@@ -4,16 +4,18 @@ import "../CSS/diceblu.css"
 import { Box, Button } from '@chakra-ui/react';
 import {useSelector} from 'react-redux';
 import { Sixplay } from './Audiosix';
+import { Jumpplay } from './Audiojump';
 
 
 
-export const Diceblue = ({handlediceblueone,handledicebluetwo,handledicebluethree,handledicebluefour,handelyeldice,handelbludice}) => {
+export const Diceblue = ({handelblueone,handelbluetwo,handelbluethree,handelbluefour,handelyeldice,handelbludice,jumpfunaudio,handlenonevent}) => {
   const [diceValue, setDiceValue] = useState(3);
   const buttonRef = useRef(null);
   const [arr,setarr]=useState([1,1,1])
   const [sixplay,setsixplay]=useState(false)
   const store=useSelector((store)=>store.blureducer)
   useEffect(() => {
+    jumpfunaudio()
     // Check if the button exists before triggering the click event
     setTimeout(() => {
       if (buttonRef.current) {
@@ -22,7 +24,7 @@ export const Diceblue = ({handlediceblueone,handledicebluetwo,handledicebluethre
     }, 2000);
     
   }, []);
-  console.log("ok")
+ 
   const rollDice = () => {
    
     let newValue = Math.floor(Math.random() * 6) + 1;
@@ -35,27 +37,46 @@ export const Diceblue = ({handlediceblueone,handledicebluetwo,handledicebluethre
     }
 
     if(store.bluone+newValue===6 || store.blutwo+newValue===6 || store.bluthree+newValue===6 || store.blufour+newValue===6){
+      let random = Math.floor(Math.random() * 4) + 1;
       setsixplay(true)
-      handlediceblueone(newValue)
-      handledicebluetwo(newValue)
-      handledicebluethree(newValue)
-      handledicebluefour(newValue)
+      if(random==1){
+        handelblueone(newValue)
+      }
+      else if(random==2){
+        handelbluetwo(newValue)
+      }
+      else if(random==3){
+        handelbluethree(newValue)
+      }
+      else if(random==4){
+        handelbluefour(newValue)
+      } 
+      
     
     }
 
 
-    else if((store.bluone>=6 && store.bluone+newValue<=44)  ||  (store.blutwo>=6 && store.blutwo+newValue<=44) || (store.bluthree>=6 && store.bluthree+newValue<=44) || (store.blufour>=6 && store.blufour+newValue<=44)){
-      
+    else if((store.bluone>=6 && store.bluone+newValue<=45)){  
       setsixplay(false)
-      handlediceblueone(newValue)
-      handledicebluetwo(newValue)
-      handledicebluethree(newValue)
-      handledicebluefour(newValue)
+      handelblueone(newValue)
     }
-
-
-    else if(store.blucarryone+newValue===45){
+    else if(store.blutwo>=6 && store.blutwo+newValue<=45) {
+      setsixplay(false)
+      handelbluetwo(newValue)
+    }
+    else if(store.bluthree>=6 && store.bluthree+newValue<=45){
+      setsixplay(false)
+      handelbluethree(newValue)
+    }
+    else if(store.blufour>=6 && store.blufour+newValue<=45){
+      setsixplay(false)
+      handelbluefour(newValue)
+    }
+    else if(store.bluone==45 &&  store.blutwo==45 && store.bluthree==45 && store.blufour==45){
       alert("winner")
+    }
+    else{
+      handlenonevent()
     }
     
   };
