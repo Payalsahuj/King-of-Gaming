@@ -56,7 +56,7 @@ export const Ludo = () => {
     const dispatch=useDispatch()
     function getdata() {
 
-        axios("http://localhost:4500/user")
+        axios("https://ludo-0qj0.onrender.com/user")
             .then((res) => {
                 res.data.msg.forEach((el) => {
                     if (el.email === email) {

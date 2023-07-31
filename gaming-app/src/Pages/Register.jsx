@@ -81,7 +81,7 @@ export const Register = () => {
         coin:0
       }
       
-      axios.post("http://localhost:4500/user/register",obj)
+      axios.post("https://ludo-0qj0.onrender.com/user/register",obj)
       .then((res)=>{
         console.log(res)
         localStorage.setItem("token",res.data.token)

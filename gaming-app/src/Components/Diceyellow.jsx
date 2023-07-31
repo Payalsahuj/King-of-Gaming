@@ -88,7 +88,7 @@ export const Diceyellow = ({handlediceyellowone,handlediceyellowtwo,handlediceye
   function patchdata(){
         let update=+localcoin+50
         
-    axios.patch(`http://localhost:4500/user/update/${param.id}`,{coin:update})
+    axios.patch(`https://ludo-0qj0.onrender.com/user/update/${param.id}`,{coin:update})
     .then((res)=>{
       setdata(res.data.data)
       localStorage.setItem("coin",update)

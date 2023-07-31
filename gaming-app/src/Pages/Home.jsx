@@ -35,7 +35,7 @@ export const Home=()=>{
     const coin=localStorage.getItem("coin")
     function getdata(){
         
-        axios("http://localhost:4500/user")
+        axios("https://ludo-0qj0.onrender.com/user")
         .then((res)=>{
             
             res.data.msg.forEach((el)=>{
