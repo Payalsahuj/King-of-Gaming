@@ -1,21 +1,19 @@
-import { CARRYFOUR, CARRYONE, CARRYTHREE, CARRYTWO, DEADFOURYEL, DEADONEYEL, DEADTHREEYEL, DEADTWOYEL, YELFOUR, YELONE, YELTHREE, YELTWO } from "./actionType"
+import { CARRYFOUR, CARRYONE, CARRYTHREE, CARRYTWO, DEADFOURYEL, DEADONEYEL, DEADTHREEYEL, DEADTWOYEL, RESET, YELFOUR, YELONE, YELTHREE, YELTWO } from "./actionType"
 
 
 const initialstate={
    carryone:0,
    yelone:0,
-   yelonepresent:true,
+   
    carrytwo:0,
    yeltwo:0,
-   yeltwopresent:true,
+  
    carrythree:0,
    yelthree:0,
-   yelthreepresent:true,
+  
    carryfour:0,
    yelfour:0,
-   yelfourpresent:true,
-   countthrow:0,
-   ludodisable:false
+  
 }
 
 export const reducer=(state=initialstate,action)=>{
@@ -57,6 +55,9 @@ export const reducer=(state=initialstate,action)=>{
         case DEADFOURYEL:{
             return {...state,yelfour:0,carrytwo:0,carryone:0,carrythree:0,carryfour:0} 
         }
+        case RESET:{
+            return {carryone:0,yelone:0,carrytwo:0, yeltwo:0,carrythree:0,yelthree:0,carryfour:0,yelfour:0}
+           }
         default:{
             return {...state}
         }

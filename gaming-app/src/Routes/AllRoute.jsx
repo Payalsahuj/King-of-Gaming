@@ -15,7 +15,7 @@ function Allroute(){
             <Route path="/welcome" element={<Welcometwo/>}/>
             <Route path="/register" element={<Register/>}/>
             <Route path="/home" element={<PrivateRoute><Home/></PrivateRoute>}/>
-            <Route path="/ludo" element={<PrivateRoute><Ludo/></PrivateRoute>}/>
+            <Route path="/ludo/:id" element={<PrivateRoute><Ludo/></PrivateRoute>}/>
             
         </Routes>
 

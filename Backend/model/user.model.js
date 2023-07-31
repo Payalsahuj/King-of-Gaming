@@ -4,7 +4,8 @@ const userSchema=mongoose.Schema({
     name:String,
     country:String,
     email:String,
-    image:String
+    image:String,
+    coin:Number
 },{
     versionKey:false
 })

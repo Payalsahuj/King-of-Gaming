@@ -1,4 +1,4 @@
-import { BLUBUTTFOUR, BLUBUTTONE, BLUBUTTTHREE, BLUBUTTTWO,DEADFOURBLU, DEADONEBLU, DEADTHREEBLU, DEADTWOBLU } from "./actionType"
+import { BLUBUTTFOUR, BLUBUTTONE, BLUBUTTTHREE, BLUBUTTTWO,DEADFOURBLU, DEADONEBLU, DEADTHREEBLU, DEADTWOBLU, RESETBLU } from "./actionType"
 
 
 
@@ -6,8 +6,7 @@ const initialstate={
    bluone:0,
    blutwo:0,
    bluthree:0,
-   blufour:0,
-   countthrow:0
+   blufour:0
 }
 
 export const reducer=(state=initialstate,action)=>{
@@ -35,6 +34,14 @@ export const reducer=(state=initialstate,action)=>{
         }
         case DEADFOURBLU:{
             return {...state,blufour:0,blucarrytwo:0,blucarryone:0,blucarrythree:0,blucarryfour:0}
+        }
+        case RESETBLU:{
+            return {
+                bluone:0,
+                blutwo:0,
+                bluthree:0,
+                blufour:0
+             }
         }
         default:{
             return {...state}

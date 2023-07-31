@@ -1,4 +1,4 @@
-import { CARRYFOUR, CARRYONE, CARRYTHREE, CARRYTWO, DEADFOURYEL, DEADONEYEL, DEADTHREEYEL, DEADTWOYEL, YELFOUR, YELONE, YELTHREE, YELTWO } from "./actionType"
+import { CARRYFOUR, CARRYONE, CARRYTHREE, CARRYTWO, DEADFOURYEL, DEADONEYEL, DEADTHREEYEL, DEADTWOYEL, RESET, YELFOUR, YELONE, YELTHREE, YELTWO } from "./actionType"
 
 
 export const carryone=(data)=>(dispatch)=>{
@@ -57,4 +57,8 @@ export const diedthreeyel=(dispatch)=>{
 
 export const diedfouryel=(dispatch)=>{
     dispatch({type:DEADFOURYEL})
+}
+
+export const reset=(dispatch)=>{
+    dispatch({type:RESET})
 }

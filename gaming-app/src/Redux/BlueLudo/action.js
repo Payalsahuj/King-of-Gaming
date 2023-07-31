@@ -1,11 +1,10 @@
-import { BLUBUTTFOUR, BLUBUTTONE, BLUBUTTTHREE, BLUBUTTTWO, DEADFOURBLU, DEADONEBLU, DEADTHREEBLU, DEADTWOBLU } from "./actionType"
+import { BLUBUTTFOUR, BLUBUTTONE, BLUBUTTTHREE, BLUBUTTTWO, DEADFOURBLU, DEADONEBLU, DEADTHREEBLU, DEADTWOBLU, RESETBLU } from "./actionType"
 
 
 
 
 export const carryonebybluone =(data)=>(dispatch)=>{
     
-    console.log(data)
     dispatch({type:BLUBUTTONE,payload:data})
 }
 
@@ -36,4 +35,8 @@ export const diedthreeblu=(dispatch)=>{
 
 export const diedfourblu=(dispatch)=>{
     dispatch({type:DEADFOURBLU})
+}
+
+export const resetblu=(dispatch)=>{
+    dispatch({type:RESETBLU})
 }

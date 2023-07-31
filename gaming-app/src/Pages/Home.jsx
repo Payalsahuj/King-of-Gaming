@@ -1,9 +1,18 @@
 import { Box, Button, Icon, Image} from "@chakra-ui/react"
 import logo from "../Image/ludoblue.webp"
-
+import {
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
+    useDisclosure,
+  } from '@chakra-ui/react'
 
 import {FaShareAlt,FaMusic} from 'react-icons/fa'
-import {FaStaffSnake} from "react-icons/fa6"
+import {FaCoins} from "react-icons/fa6"
 import ludo from "../Image/rgBH9F-.png"
 import { Gsap } from "../Components/gsap"
 import server from "../Image/512x512bb.jpg"
@@ -13,20 +22,22 @@ import { useDispatch, useSelector } from "react-redux"
 import { stopaudio, toggel } from "../Redux/Audiored/action"
 import {TbMusicOff} from "react-icons/tb"
 import {  useNavigate } from "react-router-dom"
-
+import {PiShootingStarFill} from "react-icons/pi"
 
 
 export const Home=()=>{
-    
+    const { isOpen, onOpen, onClose } = useDisclosure()
     const isMuted = useSelector((store)=> store.audioreducer.audio)
     const dispatch=useDispatch()
     const [data,setdata]=useState({})
     const navigate=useNavigate()
     const email=localStorage.getItem("email")
+    const coin=localStorage.getItem("coin")
     function getdata(){
         
         axios("http://localhost:4500/user")
         .then((res)=>{
+            
             res.data.msg.forEach((el)=>{
                 if(el.email==email){
                     setdata(el)
@@ -46,9 +57,9 @@ export const Home=()=>{
 
     function handleplaywithserver(){
         dispatch(stopaudio)
-        navigate("/ludo")
+        navigate(`/ludo/${data._id}`)
     }
-
+    
    
     return<Box fontFamily={'serif'} background={'linear-gradient(295deg, #3533CD, black)'}  p={'10% 0%'}>
         <Box style={{position:'fixed',top:'0',borderBottom:'4px solid yellow',borderTop:'2px solid transparent',width:'100%',borderRadius:'0% 0% 10% 10%',zIndex:'6'}} background={'linear-gradient(295deg, #3533CD, black)'}>
@@ -57,8 +68,8 @@ export const Home=()=>{
                     <Image src={logo} width={{base:'3%',md:'8%'}} m={'15px'} alt='' />
                     <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=23&pause=1000&color=FFEB3B&repeat=false&width=445&lines=Lodo+the+Rising+Star." alt="Typing SVG" style={{marginTop:'2%'}} />
                     </Box>
-                    <Box display={'flex'} justifyContent={'flex-end'}>
-                        <Image src={data.image} pr={'3%'} borderRadius={'10px'} w={'18%'}  alt=''/>
+                    <Box display={'flex'} justifyContent={'flex-end'} w={'35%'}   objectFit={'cover'} >
+                        <Image src={data.image} pr={'3%'} borderRadius={'10px'} w={'20%'} h={'100%'}  alt=''/>
                     </Box>
 
                 </Box>
@@ -106,10 +117,68 @@ export const Home=()=>{
             </Box>
             </Box>
             <Box>
-            <Box border={'4px solid yellow'} _hover={{cursor:'pointer',transform:'scale(1.1)'}} borderRadius={'15px'} >
-            <Icon as={FaStaffSnake} p={'3% 3%'}  w='50%' h='50%' color={'yellow'} />
+            <Box border={'4px solid yellow'} _hover={{cursor:'pointer',transform:'scale(1.1)'}} borderRadius={'15px'} onClick={onOpen} >
+            <Icon as={FaCoins} p={'3% 3%'}  w='50%' h='50%' color={'yellow'} />
+            <text style={{color:'yellow'}}>{coin}</text>
             </Box>
             </Box>
+
+
+            <Modal isOpen={isOpen} >
+        <ModalOverlay />
+        <ModalContent background={'linear-gradient(295deg, #3533CD, black)'} border={'5px solid yellow'} borderRadius={'15px'} color={'yellow'}>
+          <ModalHeader display={'flex'} fontFamily={'serif'}><span style={{fontSize:'25px'}}>Score Card</span> <PiShootingStarFill style={{marginLeft:'10px',marginTop:'3%'}} /><PiShootingStarFill style={{marginTop:'3%'}}/><PiShootingStarFill style={{marginTop:'3%'}} /> </ModalHeader>
+        
+          <ModalBody display={'flex'} fontFamily={'serif'} flexDirection={'column'} justifyContent={'space-evenly'}>
+            <Box>
+            <p>Your Total coins are : {coin}</p>
+            <p>Your Acchievement : {coin===0?<text>0</text>
+            :coin<=50?<text>⭐</text>
+            :coin<=200?<text>⭐⭐</text>
+            :coin<=400?<text>⭐⭐⭐</text>
+            :coin<=800?<text>⭐⭐⭐⭐</text>
+            :coin<=1000?<text>⭐⭐⭐⭐⭐</text>
+            :coin<=1500?<text>💎</text>
+            :coin<=2500?<text>💎💎</text>
+            :coin<=3500?<text>💎💎💎</text>
+            :coin<=4500?<text>💎💎💎💎</text>
+            :<text>💎💎💎💎💎</text>
+          } </p>
+        
+            </Box>
+            <Box w={'50%'} m={'auto'} >
+            <Image src={data?.image} alt=""/>
+            </Box>
+           <Box  >
+            
+            
+            <h1 style={{fontSize:'20px'}} >Scors Division Table -</h1>
+            <Box border={'2px solid yellow'} padding={'10px'} overflow={'scroll'} overflowX={'hidden'} borderRadius={'5px'}  height={'150px'}>
+            <p>1. Beginner : 0</p>
+            <p>2. Struggler : ⭐</p>
+            <p>3. Good Player : ⭐⭐</p>
+            <p>4. Nice Player : ⭐⭐⭐</p>
+            <p>5. Thunder One : ⭐⭐⭐⭐</p>
+            <p>6. Master Mind : ⭐⭐⭐⭐⭐</p>
+            <p>7. Pro Player : 💎</p>
+            <p>8. Excellence : 💎💎</p>
+            <p>9. Heroic Player: 💎💎💎</p>
+            <p>10. Diamond Player : 💎💎💎💎</p>
+            <p>11. Ludo King superem : 💎💎💎💎💎</p>
+            </Box>
+           </Box>
+          </ModalBody>
+
+          <ModalFooter>
+          <Button colorScheme='red' mr={3} onClick={onClose}>
+              Close
+            </Button> 
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
+
+
         </Box>
     </Box>
 }

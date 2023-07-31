@@ -4,10 +4,10 @@ const jwt=require("jsonwebtoken")
 const userRoute=express.Router()
 
 userRoute.post("/register",async(req,res)=>{
-    const {email,image,country,name}=req.body
+    const {email,image,country,name,coin}=req.body
     try{
         let token =jwt.sign({username:name},'masai')
-        const user=new userModel({email,image,country,name})
+        const user=new userModel({email,image,country,name,coin})
         await user.save()
         res.status(200).json({msg:'Welcome to the World of Rising King',token:token,email:email})
     }
@@ -28,6 +28,19 @@ userRoute.get("/",async(req,res)=>{
     }
 })
 
+userRoute.patch("/update/:id",async(req,res)=>{
+    const id=req.params.id
+    
+    try{
+        const data=await userModel.findByIdAndUpdate({_id:id},req.body)
+       
+        res.status(200).json({msg:"Coin data has been updated",data})
+    }
+    catch(err){
+        res.status(400).json({error:err.message})
+    }
+
+})
 
 module.exports={
     userRoute

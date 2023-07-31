@@ -35,8 +35,10 @@ export const Ludo = () => {
     const [deadaudio,setdeadaudio]=useState(false)
  
     const [data, setdata] = useState({})
+    const [diceeventhandle,setdiceeventhandle]=useState(true)
     const [startaudio, setstartaudio] = useState(false)
     const [jumpaudio,setjumpaudio]=useState(false)
+    const [jumpaudioyel,setjumpaudioyel]=useState(false)
     const [yelimgone,setyelimgone]=useState(store.yelone)
     const [yelimgtwo,setyelimgtwo]=useState(store.yeltwo)
     const [yelimgthree,setyelimgthree]=useState(store.yelthree)
@@ -58,6 +60,7 @@ export const Ludo = () => {
             .then((res) => {
                 res.data.msg.forEach((el) => {
                     if (el.email === email) {
+                        localStorage.setItem("coin",el.coin)
                         setdata(el)
                     }
                 })
@@ -82,32 +85,50 @@ export const Ludo = () => {
     function jumpfunaudio(){
         setjumpaudio(false)
     }
-    
+    function eventhandleofdice(val){
+        setdiceeventhandle(val)
+    }
 
 
 
 
     function handlediceyellowone(data){
+        if(data!==6){
+            eventhandleofdice(false) 
+        }
         
             dispatch(carryone(data))
-        setjumpaudio(false)
+            
+        setjumpaudioyel(false)
         setdeadaudio(false)
         
     } 
     function handlediceyellowtwo(data){
+        if(data!==6){
+            eventhandleofdice(false) 
+        }
         dispatch(carrytwo(data))
-        setjumpaudio(false)
+        
+        setjumpaudioyel(false)
         setdeadaudio(false)
         
     }
     function handlediceyellowthree(data){
+        if(data!==6){
+            eventhandleofdice(false) 
+        }
         dispatch(carrythree(data))
-        setjumpaudio(false)
+    
+        setjumpaudioyel(false)
         setdeadaudio(false)
     }
     function handlediceyellowfour(data){
+        if(data!==6){
+            eventhandleofdice(false) 
+        }
         dispatch(carryfour(data))
-        setjumpaudio(false)
+     
+        setjumpaudioyel(false)
         setdeadaudio(false)
     }
 
@@ -118,25 +139,26 @@ export const Ludo = () => {
 
     function handelyellowone(){
         if((store.yelone==0 && store.carryone===6) || store.yelone>=6 ){
-            // setjumpaudio(true)
+            eventhandleofdice(true) 
+            setjumpaudioyel(true)
             let steps=store.carryone+store.yelone
             setyelimgone(steps)
-            if(steps<41 && Math.abs(steps-storeblu.bluone)===18 && storeblu.bluone!==0){
+            if(steps<41 && Math.abs(steps-storeblu.bluone)===18 && storeblu.bluone!==0 && storeblu.bluone<41){
                 setdeadaudio(true)
                 setbluimgone(0)
                 dispatch(diedoneblu)
             }
-            if(steps<41 && Math.abs(steps-storeblu.blutwo)===18 && storeblu.blutwo!==0){
+            if(steps<41 && Math.abs(steps-storeblu.blutwo)===18 && storeblu.blutwo!==0 && storeblu.blutwo<41){
                 setdeadaudio(true)
                 setbluimgtwo(0)
                 dispatch(diedtwoblu)
             }
-            if(steps<41 && Math.abs(steps-storeblu.bluthree)===18 && storeblu.bluthree!==0){
+            if(steps<41 && Math.abs(steps-storeblu.bluthree)===18 && storeblu.bluthree!==0 && storeblu.bluthree<41){
                 setdeadaudio(true)
                 setbluimgthree(0)
                 dispatch(diedthreeblu)
             }
-            if(steps<41 && Math.abs(steps-storeblu.blufour)===18 && storeblu.blufour!==0){
+            if(steps<41 && Math.abs(steps-storeblu.blufour)===18 && storeblu.blufour!==0 && storeblu.blufour<41){
                 setdeadaudio(true)
                 setbluimgfour(0)
                 dispatch(diedfourblu)
@@ -144,6 +166,7 @@ export const Ludo = () => {
             if(store.carryone!==6){
                 handelbludice(true)
                 handelyeldice(false)
+                
                 dispatch(carryonebyyelone(steps))
             }
             else{
@@ -158,25 +181,26 @@ export const Ludo = () => {
 
     function handelyellowtwo(){
         if((store.yeltwo==0 && store.carrytwo==6)  || store.yeltwo>=6){
-            // setjumpaudio(true)
+            eventhandleofdice(true) 
+            setjumpaudioyel(true)
             let steps=store.carrytwo+store.yeltwo
             setyelimgtwo(steps)
-            if(steps<41 && Math.abs(steps-storeblu.bluone)===18 && storeblu.bluone!==0){
+            if(steps<41 && Math.abs(steps-storeblu.bluone)===18 && storeblu.bluone!==0 && storeblu.bluone<41){
                 setdeadaudio(true)
                 setbluimgone(0)
                 dispatch(diedoneblu)
             }
-            if(steps<41 && Math.abs(steps-storeblu.blutwo)===18 && storeblu.blutwo!==0){
+            if(steps<41 && Math.abs(steps-storeblu.blutwo)===18 && storeblu.blutwo!==0 && storeblu.blutwo<41){
                 setdeadaudio(true)
                 setbluimgtwo(0)
                 dispatch(diedtwoblu)
             }
-            if(steps<41 && Math.abs(steps-storeblu.bluthree)===18 && storeblu.bluthree!==0){
+            if(steps<41 && Math.abs(steps-storeblu.bluthree)===18 && storeblu.bluthree!==0 && storeblu.bluthree<41){
                 setdeadaudio(true)
                 setbluimgthree(0)
                 dispatch(diedthreeblu)
             }
-            if(steps<41 && Math.abs(steps-storeblu.blufour)===18 && storeblu.blufour!==0){
+            if(steps<41 && Math.abs(steps-storeblu.blufour)===18 && storeblu.blufour!==0 && storeblu.blufour<41){
                 setdeadaudio(true)
                 setbluimgfour(0)
                 dispatch(diedfourblu)
@@ -197,25 +221,26 @@ export const Ludo = () => {
     }
     function handelyellowthree(){
         if((store.yelthree==0 && store.carrythree==6) || store.yelthree>=6){
-            // setjumpaudio(true)
+            eventhandleofdice(true) 
+            setjumpaudioyel(true)
             let steps=store.carrythree+store.yelthree
             setyelimgthree(steps)
-            if(steps<41 && Math.abs(steps-storeblu.bluone)===18 && storeblu.bluone!==0){
+            if(steps<41 && Math.abs(steps-storeblu.bluone)===18 && storeblu.bluone!==0 && storeblu.bluone<41){
                 setdeadaudio(true)
                 setbluimgone(0)
                 dispatch(diedoneblu)
             }
-            if(steps<41 && Math.abs(steps-storeblu.blutwo)===18 && storeblu.blutwo!==0){
+            if(steps<41 && Math.abs(steps-storeblu.blutwo)===18 && storeblu.blutwo!==0 && storeblu.blutwo<41){
                 setdeadaudio(true)
                 setbluimgtwo(0)
                 dispatch(diedtwoblu)
             }
-            if(steps<41 && Math.abs(steps-storeblu.bluthree)===18 && storeblu.bluthree!==0){
+            if(steps<41 && Math.abs(steps-storeblu.bluthree)===18 && storeblu.bluthree!==0 && storeblu.bluthree<41){
                 setdeadaudio(true)
                 setbluimgthree(0)
                 dispatch(diedthreeblu)
             }
-            if(steps<41 && Math.abs(steps-storeblu.blufour)===18 && storeblu.blufour!==0){
+            if(steps<41 && Math.abs(steps-storeblu.blufour)===18 && storeblu.blufour!==0 && storeblu.blufour<41){
                 setdeadaudio(true)
                 setbluimgfour(0)
                 dispatch(diedfourblu)
@@ -234,25 +259,26 @@ export const Ludo = () => {
     function handelyellowfour(){
  
         if((store.yelfour==0 && store.carryfour==6) || store.yelfour>=6){
-            // setjumpaudio(true)
+            eventhandleofdice(true) 
+            setjumpaudioyel(true)
             let steps=store.carryfour+store.yelfour
             setyelimgfour(steps)
-            if(steps<41 && Math.abs(steps-storeblu.bluone)===18 && storeblu.bluone!==0){
+            if(steps<41 && Math.abs(steps-storeblu.bluone)===18 && storeblu.bluone!==0 && storeblu.bluone<41){
                 setdeadaudio(true)
                 setbluimgone(0)
                 dispatch(diedoneblu)
             }
-            if(steps<41 && Math.abs(steps-storeblu.blutwo)===18 && storeblu.blutwo!==0){
+            if(steps<41 && Math.abs(steps-storeblu.blutwo)===18 && storeblu.blutwo!==0 && storeblu.blutwo<41){
                 setdeadaudio(true)
                 setbluimgtwo(0)
                 dispatch(diedtwoblu)
             }
-            if(steps<41 && Math.abs(steps-storeblu.bluthree)===18 && storeblu.bluthree!==0){
+            if(steps<41 && Math.abs(steps-storeblu.bluthree)===18 && storeblu.bluthree!==0 && storeblu.bluthree<41){
                 setdeadaudio(true)
                 setbluimgthree(0)
                 dispatch(diedthreeblu)
             }
-            if(steps<41 && Math.abs(steps-storeblu.blufour)===18 && storeblu.blufour!==0){
+            if(steps<41 && Math.abs(steps-storeblu.blufour)===18 && storeblu.blufour!==0 && storeblu.blufour<41){
                 setdeadaudio(true)
                 setbluimgfour(0)
                 dispatch(diedfourblu)
@@ -286,22 +312,22 @@ export const Ludo = () => {
             setjumpaudio(true)
             let steps=data+storeblu.bluone
             setbluimgone(steps)
-            if(steps<41 && Math.abs(steps-store.yelone)===18 && store.yelone!==0){
+            if(steps<41 && Math.abs(steps-store.yelone)===18 && store.yelone!==0 && store.yelone<41){
                 setdeadaudio(true)
                 setyelimgone(0)
                 dispatch(diedoneyel)
             }
-            if(steps<41 && Math.abs(steps-store.yeltwo)===18 && store.yeltwo!==0){
+            if(steps<41 && Math.abs(steps-store.yeltwo)===18 && store.yeltwo!==0 && store.yeltwo<41){
                 setdeadaudio(true)
                 setyelimgtwo(0)
                 dispatch(diedtwoblu)
             }
-            if(steps<41 && Math.abs(steps-store.yelthree)===18 && store.yelthree!==0){
+            if(steps<41 && Math.abs(steps-store.yelthree)===18 && store.yelthree!==0 && store.yelthree<41){
                 setdeadaudio(true)
                 setyelimgthree(0)
                 dispatch(diedthreeyel)
             }
-            if(steps<41 && Math.abs(steps-store.yelfour)===18 && store.yelfour!==0){
+            if(steps<41 && Math.abs(steps-store.yelfour)===18 && store.yelfour!==0 && store.yelfour<41){
                 setdeadaudio(true)
                 setyelimgfour(0)
                 dispatch(diedfouryel)
@@ -326,22 +352,22 @@ export const Ludo = () => {
             setjumpaudio(true)
             let steps=data+storeblu.blutwo
             setbluimgtwo(steps)
-            if(steps<41 && Math.abs(steps-store.yelone)===18 && store.yelone!==0){
+            if(steps<41 && Math.abs(steps-store.yelone)===18 && store.yelone!==0 && store.yelone<41){
                 setdeadaudio(true)
                 setyelimgone(0)
                 dispatch(diedoneyel)
             }
-            if(steps<41 && Math.abs(steps-store.yeltwo)===18 && store.yeltwo!==0){
+            if(steps<41 && Math.abs(steps-store.yeltwo)===18 && store.yeltwo!==0 && store.yeltwo<41){
                 setdeadaudio(true)
                 setyelimgtwo(0)
                 dispatch(diedtwoblu)
             }
-            if(steps<41 && Math.abs(steps-store.yelthree)===18 && store.yelthree!==0){
+            if(steps<41 && Math.abs(steps-store.yelthree)===18 && store.yelthree!==0 && store.yelthree<41){
                 setdeadaudio(true)
                 setyelimgthree(0)
                 dispatch(diedthreeyel)
             }
-            if(steps<41 && Math.abs(steps-store.yelfour)===18 && store.yelfour!==0){
+            if(steps<41 && Math.abs(steps-store.yelfour)===18 && store.yelfour!==0 && store.yelfour<41){
                 setdeadaudio(true)
                 setyelimgfour(0)
                 dispatch(diedfouryel)
@@ -365,22 +391,22 @@ export const Ludo = () => {
             setjumpaudio(true)
             let steps=data+storeblu.bluthree
             setbluimgthree(steps)
-            if(steps<41 && Math.abs(steps-store.yelone)===18 && store.yelone!==0){
+            if(steps<41 && Math.abs(steps-store.yelone)===18 && store.yelone!==0 && store.yelone<41){
                 setdeadaudio(true)
                 setyelimgone(0)
                 dispatch(diedoneyel)
             }
-            if(steps<41 && Math.abs(steps-store.yeltwo)===18 && store.yeltwo!==0){
+            if(steps<41 && Math.abs(steps-store.yeltwo)===18 && store.yeltwo!==0  && store.yeltwo<41){
                 setdeadaudio(true)
                 setyelimgtwo(0)
                 dispatch(diedtwoblu)
             }
-            if(steps<41 && Math.abs(steps-store.yelthree)===18 && store.yelthree!==0){
+            if(steps<41 && Math.abs(steps-store.yelthree)===18 && store.yelthree!==0  && store.yelthree<41){
                 setdeadaudio(true)
                 setyelimgthree(0)
                 dispatch(diedthreeyel)
             }
-            if(steps<41 && Math.abs(steps-store.yelfour)===18 && store.yelfour!==0){
+            if(steps<41 && Math.abs(steps-store.yelfour)===18 && store.yelfour!==0  && store.yelfour<41){
                 setdeadaudio(true)
                 setyelimgfour(0)
                 dispatch(diedfouryel)
@@ -406,22 +432,22 @@ export const Ludo = () => {
             let steps=data+storeblu.blufour
             setbluimgfour(steps)
            
-            if(steps<41 && Math.abs(steps-store.yelone)===18 && store.yelone!==0){
+            if(steps<41 && Math.abs(steps-store.yelone)===18 && store.yelone!==0 && store.yelone<41){
                 setdeadaudio(true)
                 setyelimgone(0)
                 dispatch(diedoneyel)
             }
-            if(steps<41 && Math.abs(steps-store.yeltwo)===18 && store.yeltwo!==0){
+            if(steps<41 && Math.abs(steps-store.yeltwo)===18 && store.yeltwo!==0 && store.yeltwo<41){
                 setdeadaudio(true)
                 setyelimgtwo(0)
                 dispatch(diedtwoblu)
             }
-            if(steps<41 && Math.abs(steps-store.yelthree)===18 && store.yelthree!==0){
+            if(steps<41 && Math.abs(steps-store.yelthree)===18 && store.yelthree!==0 && store.yelthree<41){
                 setdeadaudio(true)
                 setyelimgthree(0)
                 dispatch(diedthreeyel)
             }
-            if(steps<41 && Math.abs(steps-store.yelfour)===18 && store.yelfour!==0){
+            if(steps<41 && Math.abs(steps-store.yelfour)===18 && store.yelfour!==0 && store.yelfour<41){
                 setdeadaudio(true)
                 setyelimgfour(0)
                 dispatch(diedfouryel)
@@ -446,13 +472,17 @@ export const Ludo = () => {
     }
     console.log(storeblu)
     console.log(store)
+  
 
 
     return <Box height={'100vh'} background={'linear-gradient(295deg, #3533CD, black)'} display={'flex'} justifyContent={'center'} alignItems={'center'} >
         {jumpaudio?<Jumpplay/>:''}
+        {jumpaudioyel?<Jumpplay/>:''}
+
         {deadaudio?<Deadplay/>:''}
+       
         <Box
-            w={'70%'}
+            w={{base:'100%',sm:'90%',md:'80%',lg:'70%'}}
             h={'95%'}
             // border={'2px solid yellow'} 
             display={'flex'}
@@ -976,56 +1006,56 @@ export const Ludo = () => {
 
 
 
-                    <Box h={'31%'} w={'18.7%'} position={'absolute'}  borderRight={'2px solid black'} borderBottom={'2px solid black'} backgroundColor={'#1E88E5'} display={'flex'} justifyContent={'center'} alignItems={'center'} zIndex={'3'}>
+                    <Box h={'31%'} w={{base:'25.3%',sm:'24%',md:'22%',lg:'18.7%'}}  position={'absolute'}  borderRight={'2px solid black'} borderBottom={'2px solid black'} backgroundColor={'#1E88E5'} display={'flex'} justifyContent={'center'} alignItems={'center'} zIndex={'3'}>
                         <Box backgroundColor={'white'} w={'70%'} h={'70%'} borderRadius={'15px'} padding={'7%'} gap={'12%'} display={'grid'} gridTemplateColumns={'repeat(2,1fr)'}>
                            <Box backgroundColor={'#1E88E5'} borderRadius={'50%'}>
-                                <Image pointerEvents={displaybludice?'':'none'} onClick={handelblueone} display={bluimgone===0?'flex':'none'} src={bluestar} _hover={{cursor:'pointer'}}  w={'28%'} top={'19%'} position={'absolute'} left={'20%'} alt=""/>
+                                <Image pointerEvents={displaybludice?'':'none'} onClick={handelblueone} display={bluimgone===0?'flex':'none'} src={bluestar} _hover={{cursor:'pointer'}}  w={{base:'33%',sm:'33%',md:'29%',lg:'28%',xl:'22%'}} top={{base:'19%',sm:'21%',md:'21%',lg:'23%',xl:'22%'}} position={'absolute'} left={{base:'19%',sm:'19%',md:'20%',lg:'20%',xl:'23%'}} alt=""/>
                             </Box>
                             <Box backgroundColor={'#1E88E5'}  borderRadius={'50%'}>
-                                <Image pointerEvents={displaybludice?'':'none'} onClick={handelbluetwo} display={bluimgtwo===0?'flex':'none'} src={bluestar} _hover={{cursor:'pointer'}} w={'28%'} top={'19%'} position={'absolute'} left={'52%'} alt=""/>
+                                <Image pointerEvents={displaybludice?'':'none'} onClick={handelbluetwo} display={bluimgtwo===0?'flex':'none'} src={bluestar} _hover={{cursor:'pointer'}} w={{base:'33%',sm:'33%',md:'29%',lg:'28%',xl:'21%'}} top={{base:'19%',sm:'21%',md:'21%',lg:'23%',xl:'22%'}} position={'absolute'} left={'54%'} alt=""/>
                             </Box>
                             <Box backgroundColor={'#1E88E5'} borderRadius={'50%'}>
-                                <Image pointerEvents={displaybludice?'':'none'} onClick={handelbluethree} display={bluimgthree===0?'flex':'none'} src={bluestar} _hover={{cursor:'pointer'}} w={'28%'} top={'49%'} position={'absolute'} left={'52%'} alt=""/>
+                                <Image pointerEvents={displaybludice?'':'none'} onClick={handelbluethree} display={bluimgthree===0?'flex':'none'} src={bluestar} _hover={{cursor:'pointer'}} w={{base:'33%',sm:'33%',md:'29%',lg:'28%',xl:'22%'}} top={{base:'56%',sm:'54%',md:'54%',lg:'54%',xl:'49%'}} position={'absolute'} left={'54%'} alt=""/>
                             </Box>
                             <Box backgroundColor={'#1E88E5'} borderRadius={'50%'}>
-                                <Image pointerEvents={displaybludice?'':'none'} onClick={handelbluefour} display={bluimgfour===0?'flex':'none'} src={bluestar} _hover={{cursor:'pointer'}} w={'28%'} top={'49%'} position={'absolute'} left={'20%'} alt=""/>
+                                <Image pointerEvents={displaybludice?'':'none'} onClick={handelbluefour} display={bluimgfour===0?'flex':'none'} src={bluestar} _hover={{cursor:'pointer'}} w={{base:'33%',sm:'33%',md:'29%',lg:'28%',xl:'22%'}} top={{base:'56%',sm:'54%',md:'54%',lg:'54%',xl:'49%'}} position={'absolute'} left={{base:'19%',sm:'19%',md:'20%',lg:'20%',xl:'23%'}} alt=""/>
                             </Box>
                         </Box>
 
                     </Box>
-                    <Box h={'31%'} w={'18.7%'} position={'absolute'} right={'24%'} borderLeft={'2px solid black'} borderBottom={'2px solid black'} backgroundColor={'red'} display={'flex'} justifyContent={'center'} alignItems={'center'} zIndex={'3'}>
+                    <Box h={'31%'} w={{base:'25.3%',sm:'24%',md:'22%',lg:'18.7%'}} position={'absolute'} right={{base:'14.5%',sm:'17%',md:'20.5%',lg:'24%'}} borderLeft={'2px solid black'} borderBottom={'2px solid black'} backgroundColor={'red'} display={'flex'} justifyContent={'center'} alignItems={'center'} zIndex={'3'}>
                         <Box backgroundColor={'white'} w={'70%'} h={'70%'} borderRadius={'15px'} padding={'7%'} gap={'12%'} display={'grid'} gridTemplateColumns={'repeat(2,1fr)'}>
                             <Box backgroundColor={'red'} borderRadius={'50%'}>
-                                <Image src={redstar} w={'30%'} top={'15%'} position={'absolute'} left={'19%'} alt=""/>
+                                <Image src={redstar} w={{base:'35%',lg:'30%'}} top={{base:'21%',lg:'15%'}} position={'absolute'} left={'19%'} alt=""/>
                             </Box>
                             <Box backgroundColor={'red'} borderRadius={'50%'}>
-                                <Image src={redstar} w={'30%'} top={'15%'} position={'absolute'} left={'52%'} alt=""/>
+                                <Image src={redstar} w={{base:'35%',lg:'30%'}} top={{base:'21%',lg:'15%'}} position={'absolute'} left={'52%'} alt=""/>
                             </Box>
                             <Box backgroundColor={'red'} borderRadius={'50%'}>
-                                <Image src={redstar} w={'30%'} top={'45%'} position={'absolute'} left={'52%'} alt=""/>
+                                <Image src={redstar} w={{base:'35%',lg:'30%'}} top={{base:'54%',lg:'45%'}} position={'absolute'} left={'52%'} alt=""/>
                             </Box>
                             <Box backgroundColor={'red'} borderRadius={'50%'}>
-                                <Image src={redstar} w={'30%'} top={'45%'} position={'absolute'} left={'19%'} alt=""/>
+                                <Image src={redstar}w={{base:'35%',lg:'30%'}}  top={{base:'54%',lg:'45%'}} position={'absolute'} left={'19%'} alt=""/>
                             </Box>
                         </Box>
                     </Box>
-                    <Box h={'31%'} w={'18.7%'} position={'absolute'}  bottom={'4.2%'} borderRight={'2px solid black'} borderTop={'2px solid black'} background={'green'} display={'flex'} justifyContent={'center'} alignItems={'center'} zIndex={'3'}>
+                    <Box h={'31%'} w={{base:'25.3%',sm:'24%',md:'22%',lg:'18.7%'}} position={'absolute'}  bottom={'4.2%'} borderRight={'2px solid black'} borderTop={'2px solid black'} background={'green'} display={'flex'} justifyContent={'center'} alignItems={'center'} zIndex={'3'}>
                         <Box backgroundColor={'white'} w={'70%'} h={'70%'} borderRadius={'15px'} padding={'7%'} gap={'12%'} display={'grid'} gridTemplateColumns={'repeat(2,1fr)'}>
                             <Box backgroundColor={'green'} borderRadius={'50%'}>
-                                <Image src={greenstar} w={'32%'} top={'19%'} position={'absolute'} left={'18%'} alt=""/>
+                                <Image src={greenstar} w={'32%'} top={{base:'22%',lg:'19%'}} position={'absolute'} left={'18%'} alt=""/>
                             </Box>
                             <Box backgroundColor={'green'} borderRadius={'50%'}>
-                                <Image src={greenstar} w={'32%'} top={'19%'} position={'absolute'} left={'50%'} alt=""/>
+                                <Image src={greenstar} w={'32%'} top={{base:'22%',lg:'19%'}} position={'absolute'} left={'50%'} alt=""/>
                             </Box>
                             <Box backgroundColor={'green'} borderRadius={'50%'}>
-                                <Image src={greenstar} w={'32%'} top={'49%'} position={'absolute'} left={'50%'} alt=""/>
+                                <Image src={greenstar} w={'32%'} top={{base:'55%',lg:'49%'}} position={'absolute'} left={'50%'} alt=""/>
                             </Box>
                             <Box backgroundColor={'green'} borderRadius={'50%'}>
-                                <Image src={greenstar} w={'32%'} top={'49%'} position={'absolute'} left={'18%'} alt=""/>
+                                <Image src={greenstar} w={'32%'} top={{base:'55%',lg:'49%'}} position={'absolute'} left={'18%'} alt=""/>
                             </Box>
                         </Box>
                     </Box>
-                    <Box h={'31%'} w={'18.7%'} position={'absolute'}  bottom={'4.2%'} right={'24%'} borderLeft={'2px solid black'} borderTop={'2px solid black'} backgroundColor={'yellow'} display={'flex'} justifyContent={'center'} alignItems={'center'} zIndex={'3'}>
+                    <Box h={'31%'} w={{base:'25.3%',sm:'24%',md:'22%',lg:'18.7%'}}  position={'absolute'}  bottom={'4.2%'} right={{base:'14.5%',sm:'17%',md:'20.5%',lg:'24%'}} borderLeft={'2px solid black'} borderTop={'2px solid black'} backgroundColor={'yellow'} display={'flex'} justifyContent={'center'} alignItems={'center'} zIndex={'3'}>
                         <Box backgroundColor={'white'} w={'70%'} h={'70%'} borderRadius={'15px'} padding={'7%'} gap={'12%'} display={'grid'} gridTemplateColumns={'repeat(2,1fr)'}>
                             <Box backgroundColor={'yellow'} borderRadius={'50%'}>
                                 <Image pointerEvents={displayyelldice?'':'none'} onClick={handelyellowone} _hover={{cursor:'pointer'}} display={yelimgone===0?'flex':'none'} src={yellowstar} w={'25%'} top={'23%'} position={'absolute'} left={'25%'} alt=""/>
@@ -1060,7 +1090,7 @@ export const Ludo = () => {
                 <Box h={'45%'} backgroundColor={'#d8ba11'} borderRadius={'15px'} display={'flex'} alignItems={'center'} justifyContent={"center"}>
                     <Box h={'70%'} w={'75%'} borderRadius={'15px'}  backgroundColor={'white'}>
                         <Box display={displayyelldice?'flex':'none'} w={'100%'} h={'100%'}>
-                      <Diceyellow  handlediceyellowone={handlediceyellowone} handlediceyellowtwo={handlediceyellowtwo} handlediceyellowthree={handlediceyellowthree} handlediceyellowfour={handlediceyellowfour} handelyeldice={handelyeldice} handelbludice={handelbludice} handlenoneventyell={handlenoneventyell}/>
+                      <Diceyellow  handlediceyellowone={handlediceyellowone} handlediceyellowtwo={handlediceyellowtwo} handlediceyellowthree={handlediceyellowthree} handlediceyellowfour={handlediceyellowfour} handelyeldice={handelyeldice} handelbludice={handelbludice} handlenoneventyell={handlenoneventyell} diceeventhandle={diceeventhandle} />
 
                         </Box>
                     </Box>

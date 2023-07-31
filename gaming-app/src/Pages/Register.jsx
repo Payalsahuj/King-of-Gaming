@@ -11,7 +11,7 @@ const imgarray=[
   "https://pre00.deviantart.net/bcc9/th/pre/i/2017/039/b/d/profile_pic_by_a_series_of_blunders-dayds12.png",
   "https://c.tenor.com/8G_LVHIqGJ8AAAAj/kirby-hi-there.gif",
   "https://i.pinimg.com/originals/31/ff/38/31ff38e9e11161c93fb46840993e5cfe.png",
-  "https://cdn1.iconfinder.com/data/icons/character-2/176/22-512.png",
+  // "https://cdn1.iconfinder.com/data/icons/character-2/176/22-512.png",
   "https://i.pinimg.com/originals/68/30/42/68304296bac6ab2b8841872c5936bd5c.gif",
   "https://i.pinimg.com/originals/92/a4/8a/92a48ab70a4028b6c7ef34d7dda5b3af.png",
   "https://gere720.weebly.com/uploads/1/1/6/9/116940787/nicolaugh_orig.gif",
@@ -77,7 +77,8 @@ export const Register = () => {
         country:selectedCountry,
         image:img,
         name:name,
-        email
+        email,
+        coin:0
       }
       
       axios.post("http://localhost:4500/user/register",obj)
