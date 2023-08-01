@@ -35,7 +35,7 @@ export const Diceyellow = ({handlediceyellowone,handlediceyellowtwo,handlediceye
   const [data,setdata]=useState({})
   const store=useSelector((store)=>store.yellreducer)
   
-  const localcoin=localStorage.getItem("coin")
+  const localcoin=localStorage.getItem("ludocoin")
   
   
 
@@ -91,7 +91,7 @@ export const Diceyellow = ({handlediceyellowone,handlediceyellowtwo,handlediceye
     axios.patch(`https://ludo-0qj0.onrender.com/user/update/${param.id}`,{coin:update})
     .then((res)=>{
       setdata(res.data.data)
-      localStorage.setItem("coin",update)
+      localStorage.setItem("ludocoin",update)
       handlewinner()
       
     })
@@ -105,7 +105,7 @@ export const Diceyellow = ({handlediceyellowone,handlediceyellowtwo,handlediceye
       navigate("/home")
     },4000)
   }
-console.log("ok")
+
  
   return (<>
     <Button pointerEvents={diceeventhandle?'':'none'} isDisabled={store.ludodisable} className='dice' style={{marginTop:'10%',marginLeft:'10%'}}  onClick={rollDice}>

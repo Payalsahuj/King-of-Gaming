@@ -9,7 +9,6 @@
     align-items: center; 
 }
 #logincontainer{
-    
     background:linear-gradient(295deg, #3533CD, black);
     display: flex;
     justify-content: center;
@@ -87,5 +86,8 @@
         padding:10px 0px;
         background-color:#1A237E;
         font-family: serif;
+    }
+    .paragra{
+        font-size: 10px;
     }
 }

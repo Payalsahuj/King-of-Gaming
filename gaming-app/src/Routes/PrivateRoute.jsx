@@ -5,8 +5,8 @@ import { Navigate } from "react-router-dom";
 export const PrivateRoute = ({children})=>{
    
 
- let token=localStorage.getItem("token")
- let email=localStorage.getItem("email")
+ let token=localStorage.getItem("ludotoken")
+ let email=localStorage.getItem("ludoemail")
 
  if(token && email){
     return children

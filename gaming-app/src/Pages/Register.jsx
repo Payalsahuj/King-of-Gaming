@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import "../CSS/login.css"
 
-import { useToast } from "@chakra-ui/react";
+import { Box, useToast } from "@chakra-ui/react";
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
 
@@ -43,8 +43,8 @@ export const Register = () => {
   const navigate=useNavigate("")
   const toast=useToast()
   
-  const token=localStorage.getItem("token")
-  const emaillocal=localStorage.getItem("email")
+  const token=localStorage.getItem("ludotoken")
+  const emaillocal=localStorage.getItem("ludoemail")
   
  
 
@@ -84,9 +84,9 @@ export const Register = () => {
       axios.post("https://ludo-0qj0.onrender.com/user/register",obj)
       .then((res)=>{
         console.log(res)
-        localStorage.setItem("token",res.data.token)
-        localStorage.setItem("email",res.data.email)
-
+        localStorage.setItem("ludotoken",res.data.token)
+        localStorage.setItem("ludoemail",res.data.email)
+       
         toast({
           position: 'top-right',
           title: res.data.msg,
@@ -115,9 +115,9 @@ export const Register = () => {
   return (<div id="logincontainer" style={{display:'flex',flexDirection:'column',padding:'7% 0%'}}>
       <div id='conatin' >
         <div id="details" >
-          <p>*Your country name & Flag will be shown to other</p>
-          <p>players when you play online multiplayer*</p>
-          <select value={selectedCountry}  style={{ padding: '2% 2%', marginTop: '8%', fontSize: '23px', borderRadius: '8px', backgroundColor: '#565454', color: 'white',width:'90%' }} onChange={(e)=>setSelectedCountry(e.target.value)}>
+          <p  className="paragra">*Your country name & Flag will be shown to other</p>
+          <p className="paragra">players when you play online multiplayer*</p>
+          <select className="paragra" value={selectedCountry}  style={{ padding: '2% 2%', marginTop: '8%', fontSize: '21px', borderRadius: '8px', backgroundColor: '#565454', color: 'white',width:'90%' }} onChange={(e)=>setSelectedCountry(e.target.value)}>
             <option value="" >🌍  Select your country</option>
             <option value="USA"> USA</option>
             <option value="United Kingdom">United Kingdom</option>
@@ -152,17 +152,17 @@ export const Register = () => {
           <br/>
           <br/>
           <div style={{display:'flex',width:'90%',margin:'auto'}}>
-            <div style={{width:'38%',textAlign:'left'}}>
+            <Box w={{base:'50%',md:'38%'}} style={{textAlign:'left'}}>
               <img style={{objectFit:'cover',width:'100%',textAlign:'left',height:'100%'}} src={img} alt="" />
-            </div>
-            <div style={{width:'62%',display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
+            </Box>
+            <Box fontSize={{base:'11px',sm:'17px',md:'25px'}} w={{base:'50%',md:'62%'}} style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
               <p>Enter your name:</p>
               
-              <input value={name} type="text" onChange={(e)=>setname(e.target.value)} style={{width:'85%',padding:'6px 5px',fontSize:'26px',borderRadius:'10px'}} placeholder="Guest" />
+              <input value={name} type="text" onChange={(e)=>setname(e.target.value)} style={{width:'85%',padding:'6px 5px',borderRadius:'10px',color:'black'}} placeholder="Guest" />
               <p>Enter your Email:</p>
               
-              <input type="email" value={email} onChange={(e)=>setemail(e.target.value)} style={{width:'85%',padding:'6px 5px',fontSize:'26px',borderRadius:'10px'}} placeholder="Email" />
-            </div>
+              <input type="email" value={email} onChange={(e)=>setemail(e.target.value)} style={{width:'85%',padding:'6px 5px',borderRadius:'10px',color:'black'}} placeholder="Email" />
+            </Box>
           </div>
         </div>
         <br/>

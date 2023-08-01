@@ -4,6 +4,7 @@ import welcometwo from "../Image/up-removebg-preview.png"
 import { useEffect, useState } from "react"
 import "../CSS/welcometwo.css"
 import { useNavigate } from "react-router-dom"
+import { Box, Image } from "@chakra-ui/react"
 
 export const Welcometwo=()=>{
     const navigate=useNavigate("")
@@ -17,12 +18,12 @@ export const Welcometwo=()=>{
     navigate("/register")
     }
     
-    return <div onClick={handleclick}   style={{display:'flex',flexDirection:'column'}} id="welcometwo"  >
+    return <Box onClick={handleclick} height={'100vh'}  padding={'15px'}  style={{display:'flex',flexDirection:'column'}} id="welcometwo"  >
 
 
         
-        <img data-aos="zoom-out" data-aos-easing="ease-in-back" data-aos-delay="500" style={{width:'620px'}} src={welcometwo} alt="" />
-        <h3  style={{color:'#6098e2',fontSize:'27px'}} data-aos="zoom-out" data-aos-easing="ease-in-back" data-aos-delay="500">Tap to Start . . . </h3>
+        <Image padding={{base:'15px',sm:'0px'}} data-aos="zoom-out" data-aos-easing="ease-in-back" data-aos-delay="500"   src={welcometwo} alt="" />
+        <h4  style={{color:'#6098e2',fontSize:'27px'}} data-aos="zoom-out" data-aos-easing="ease-in-back" data-aos-delay="500">Tap to Start . . . </h4>
         {/* {wait?<Navigate to={'/register'}/>:''}  */}
-    </div>
+    </Box>
 }
