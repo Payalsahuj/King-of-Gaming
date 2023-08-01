@@ -108,12 +108,15 @@ export const Diceyellow = ({handlediceyellowone,handlediceyellowtwo,handlediceye
 
  
   return (<>
-    <Button pointerEvents={diceeventhandle?'':'none'} isDisabled={store.ludodisable} className='dice' style={{marginTop:'10%',marginLeft:'10%'}}  onClick={rollDice}>
+  <Box w={'100%'} pointerEvents={diceeventhandle?'':'none'} display={'flex'} justifyContent={'center'} alignItems={'center'} onClick={rollDice}>
+  <Button pointerEvents={diceeventhandle?'':'none'} isDisabled={store.ludodisable} className='dice'   onClick={rollDice}>
       {sixplay?<Sixplay/>:''}
       <h1 style={{width:'100%',height:'100%'}}>{arr.length}</h1>
       {winner?<Winnerplay/>:''}
       
     </Button>
+  </Box>
+   
     <Modal isOpen={isOpen} >
         <ModalOverlay />
         <ModalContent background={'linear-gradient(295deg, #3533CD, black)'} border={'5px solid yellow'} borderRadius={'15px'} top={'18%'} color={'yellow'}>
