@@ -5,6 +5,7 @@ import "../CSS/login.css"
 import { Box, useToast } from "@chakra-ui/react";
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
+import Loading from "../Components/Loading";
 
 const imgarray=[
 
@@ -42,7 +43,7 @@ export const Register = () => {
   const [email,setemail]=useState("")
   const navigate=useNavigate("")
   const toast=useToast()
-  
+  const [loading,setloading]=useState(false)
   const token=localStorage.getItem("ludotoken")
   const emaillocal=localStorage.getItem("ludoemail")
   
@@ -73,6 +74,7 @@ export const Register = () => {
         }) 
       }
     else{
+      setloading(true)
       let obj={
         country:selectedCountry,
         image:img,
@@ -84,6 +86,7 @@ export const Register = () => {
       axios.post("https://ludo-0qj0.onrender.com/user/register",obj)
       .then((res)=>{
         console.log(res)
+        setloading(false)
         localStorage.setItem("ludotoken",res.data.token)
         localStorage.setItem("ludoemail",res.data.email)
        
@@ -112,7 +115,7 @@ export const Register = () => {
 
  
 
-  return (<div id="logincontainer" style={{display:'flex',flexDirection:'column',padding:'7% 0%'}}>
+  return (<>{loading?<Loading/>:<div id="logincontainer"  style={{display:'flex',flexDirection:'column',padding:'7% 0%'}}>
       <div id='conatin' >
         <div id="details" >
           <p  className="paragra">*Your country name & Flag will be shown to other</p>
@@ -182,7 +185,7 @@ export const Register = () => {
       <br/>
       <br/>
       <button id="continue" onClick={register} ><b>Continue</b></button>
-
-    </div>
+      
+    </div>}</>
   );
 }

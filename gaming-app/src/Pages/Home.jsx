@@ -78,7 +78,7 @@ export const Home=()=>{
     }
     
    
-    return<Box fontFamily={'serif'}  background={'linear-gradient(295deg, #3533CD, black)'}  p={'10% 0%'}>
+    return<Box fontFamily={'serif'} height={{base:'auto',lg:'100vh'}}  background={'linear-gradient(295deg, #3533CD, black)'}  p={'10% 0%'}>
         <Box style={{position:'fixed',top:'0',borderBottom:'4px solid yellow',borderTop:'2px solid transparent',width:'100%',borderRadius:'0% 0% 10% 10%',zIndex:'6'}} background={'linear-gradient(295deg, #3533CD, black)'}>
                 <Box style={{ display: 'flex', flexDirection: 'row',justifyContent:'space-between', alignItems: 'center' }}>
                     <Box display={'flex'} >
@@ -93,7 +93,7 @@ export const Home=()=>{
         </Box>
         <br/>
         <Box  display={'flex'} flexDirection={{base:'column',sm:'column',md:'column',lg:'row'}} mt={{base:'10%',sm:'0%'}} gap={'2%'} justifyContent={'center'} alignItems={'center'} >
-        <Box w={{base:'100%',lg:'37%'}} padding={'0% 5%'} borderRadius={'20px'} >
+        <Box w={{base:'100%',lg:'37%'}} padding={'0% 5%'} marginTop={'2%'} borderRadius={'20px'} >
         <Image src={ludo} w={{base:'70%',sm:'100%'}} style={{margin:'auto'}} alt="" />
         <Gsap/>
         </Box>
