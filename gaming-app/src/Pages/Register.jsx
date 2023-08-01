@@ -117,7 +117,7 @@ export const Register = () => {
         <div id="details" >
           <p  className="paragra">*Your country name & Flag will be shown to other</p>
           <p className="paragra">players when you play online multiplayer*</p>
-          <select className="paragra" value={selectedCountry}  style={{ padding: '2% 2%', marginTop: '8%', fontSize: '21px', borderRadius: '8px', backgroundColor: '#565454', color: 'white',width:'90%' }} onChange={(e)=>setSelectedCountry(e.target.value)}>
+          <select className="select" value={selectedCountry}  style={{ padding: '2% 2%', marginTop: '8%', borderRadius: '8px', backgroundColor: '#565454', color: 'white',width:'90%' }} onChange={(e)=>setSelectedCountry(e.target.value)}>
             <option value="" >🌍  Select your country</option>
             <option value="USA"> USA</option>
             <option value="United Kingdom">United Kingdom</option>

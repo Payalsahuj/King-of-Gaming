@@ -57,6 +57,9 @@
      border-radius:10px;
      background-color:#283593;
 }
+.select{
+    font-size: 25px;
+}
 
 @media screen and  (max-width: 1224px){
     #conatin{
@@ -88,6 +91,9 @@
         font-family: serif;
     }
     .paragra{
-        font-size: 10px;
+        font-size: 12px;
+    }
+    .select{
+        font-size: 15px;
     }
 }
