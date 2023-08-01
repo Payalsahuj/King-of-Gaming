@@ -49,6 +49,7 @@ export const Diceblue = ({handelblueone,handelbluetwo,handelbluethree,handelblue
     
     setarr(new Array(newValue).fill(1))
     setDiceValue(newValue)
+    console.log(newValue)
     setTimeout(() => {
       if(newValue!==6 && store.bluone==0 && store.blutwo==0 && store.bluthree==0 && store.blufour==0){
         setsixplay(false)

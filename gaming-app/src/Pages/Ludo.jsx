@@ -488,7 +488,7 @@ export const Ludo = () => {
         handelbludice(false)
         handelyeldice(true) 
     }
-    // console.log(storeblu)
+    console.log(storeblu)
     console.log(store)
     
 

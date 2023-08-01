@@ -59,6 +59,7 @@
      width: 35%;
      border-radius:10px;
      background-color:#283593;
+     font-size: 22px;
 }
 .select{
     font-size: 25px;
@@ -109,5 +110,17 @@
     }
     .select{
         font-size: 15px;
+    }
+    #profilepic{
+       
+         font-size: 17px;
+    }
+    #continue{
+
+        font-size:18px;
+        
+    }
+    #email{
+        margin-top: 12px;
     }
 }

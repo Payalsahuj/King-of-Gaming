@@ -158,11 +158,12 @@ export const Register = () => {
             <Box w={{base:'50%',md:'38%'}} style={{textAlign:'left'}}>
               <img style={{objectFit:'cover',width:'100%',textAlign:'left',height:'100%'}} src={img} alt="" />
             </Box>
-            <Box fontSize={{base:'11px',sm:'17px',md:'25px'}} w={{base:'50%',md:'62%'}} style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
+            <Box fontSize={{base:'12px',sm:'17px',md:'25px'}} w={{base:'50%',md:'62%'}} style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
               <p>Enter your name:</p>
-              
+             
               <input value={name} type="text" onChange={(e)=>setname(e.target.value)} style={{width:'85%',padding:'6px 5px',borderRadius:'10px',color:'black'}} placeholder="Guest" />
-              <p>Enter your Email:</p>
+              
+              <p id="email">Enter your Email:</p>
               
               <input type="email" value={email} onChange={(e)=>setemail(e.target.value)} style={{width:'85%',padding:'6px 5px',borderRadius:'10px',color:'black'}} placeholder="Email" />
             </Box>
@@ -171,7 +172,7 @@ export const Register = () => {
         <br/>
         <br/>
         <div id="profilepic" >
-          <h1 style={{color:'yellow',fontSize:'20px',fontFamily:'serif'}}><b>Select Your Profile Picture</b></h1>
+          <h1 style={{color:'yellow',fontFamily:'serif'}}><b>Select Your Profile Picture</b></h1>
           <br/>
           <div style={{width:'90%',height:'330px',marginBottom:'10px',margin:'auto',display:'grid',padding:'6px 6px',gridTemplateColumns:'repeat(3,1fr)',gap:'10px',backgroundColor:'#455A64'}} id="scrollbody">
             { imgarray.map((image)=><div key={image}><img onClick={(e)=>setimg(image)} style={{objectFit:'cover',width:'100%',height:'100%',borderRadius:'10px'}}  src={image} alt=""/></div>)

@@ -44,7 +44,7 @@ export const Diceyellow = ({handlediceyellowone,handlediceyellowtwo,handlediceye
    
     setarr(new Array(newValue).fill(1))
     setDiceValue(newValue)
-    
+    console.log(newValue)
     setTimeout(()=>{
       if(newValue!==6 && store.yelone==0 && store.yeltwo==0 && store.yelthree==0 && store.yelfour==0){
         handelyeldice(false)
@@ -109,7 +109,7 @@ export const Diceyellow = ({handlediceyellowone,handlediceyellowtwo,handlediceye
  
   return (<>
   <Box w={'100%'} pointerEvents={diceeventhandle?'':'none'} display={'flex'} justifyContent={'center'} alignItems={'center'} onClick={rollDice}>
-  <Button pointerEvents={diceeventhandle?'':'none'} isDisabled={store.ludodisable} className='dice'   onClick={rollDice}>
+  <Button pointerEvents={diceeventhandle?'':'none'} isDisabled={store.ludodisable} className='dice'   >
       {sixplay?<Sixplay/>:''}
       <h1 style={{width:'100%',height:'100%'}}>{arr.length}</h1>
       {winner?<Winnerplay/>:''}

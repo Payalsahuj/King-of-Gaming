@@ -31,7 +31,7 @@ export default function Loading() {
         background:'linear-gradient(295deg, #3533CD, black)'
       }}
     >
-        <Box >
+        <Box mt={'8%'}>
       <SpinnerWithLetter
         
         thickness='4px'
