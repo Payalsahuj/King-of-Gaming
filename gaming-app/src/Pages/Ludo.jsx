@@ -1091,7 +1091,7 @@ export const Ludo = () => {
                     </Box>
 
 
-                    <Box position={'absolute'} top={{base:'46.5%',sm:'44%',md:'41%'}} left={{base:'44.5%',sm:'45.5%',md:'45.8%'}} height={{base:'7%',sm:'13%',md:'17.5%'}} w={{base:'11%',md:'9%'}} borderRadius={'50%'} backgroundColor={'#073864'} display={'flex'} justifyContent={'center'} alignItems={'center'}>
+                    <Box position={'absolute'} top={{base:'46.5%',sm:'44%',md:'41%'}} left={{base:'44%',sm:'44.5%',md:'45.8%'}} height={{base:'7%',sm:'13%',md:'17.5%'}} w={{base:'12%',md:'9%'}} borderRadius={'50%'} backgroundColor={'#073864'} display={'flex'} justifyContent={'center'} alignItems={'center'}>
                         <Box borderRadius={'50%'} w={'80%'} h={'80%'} zIndex={'2'} display={'flex'} justifyContent={'center'} alignItems={'center'} background={'linear-gradient(305deg, rgba(237,66,31,1) 0%, rgba(253,248,45,1) 100%)'}>
                             <GiPodiumWinner style={{width:'100%',height:'60%'}}/>
                         </Box>

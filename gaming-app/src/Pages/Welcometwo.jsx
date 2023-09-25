@@ -23,7 +23,7 @@ export const Welcometwo=()=>{
 
         
         <Image padding={{base:'15px',sm:'0px'}} data-aos="zoom-out" data-aos-easing="ease-in-back" data-aos-delay="500"   src={welcometwo} alt="" />
-        <h4  style={{color:'#6098e2',fontSize:'27px'}} data-aos="zoom-out" data-aos-easing="ease-in-back" data-aos-delay="500">Tap to Start . . . </h4>
+        <h4 id="start" data-aos="zoom-out" data-aos-easing="ease-in-back" data-aos-delay="500">Tap to Start . . . </h4>
         {/* {wait?<Navigate to={'/register'}/>:''}  */}
     </Box>
 }
