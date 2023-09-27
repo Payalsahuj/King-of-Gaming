@@ -26,3 +26,14 @@
 <h3 align="center">CSS Libraries</h3>
 <p align="center">Chakra-UI</p> 
 </div>  
+
+## Welcome Page
+![Screenshot (1557)](https://github.com/Payalsahuj/King-of-Gaming/assets/115584065/f72021be-c661-4f02-842d-3f13ee3c376d)
+![Screenshot (1556)](https://github.com/Payalsahuj/King-of-Gaming/assets/115584065/4d5140a5-4d38-4177-8f15-35e494a29262)
+## Registration page
+![Screenshot (1561)](https://github.com/Payalsahuj/King-of-Gaming/assets/115584065/35214145-2a68-4692-aced-2ec43ea28e82)
+## Gaming Dashboard
+![Screenshot (1558)](https://github.com/Payalsahuj/King-of-Gaming/assets/115584065/b52d87e3-9696-4092-8210-2858dd05c7cf)
+## Play with server
+![Screenshot (1562)](https://github.com/Payalsahuj/King-of-Gaming/assets/115584065/9dd2046f-8cc7-4a13-9acc-45d42f25db10)
+
